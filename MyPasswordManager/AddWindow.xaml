@@ -1,0 +1,25 @@
+﻿<Window x:Class="MyPasswordManager.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPasswordManager"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner" SizeToContent="Height"
+        Title="Add Login" Height="181" Width="200" ResizeMode="NoResize">
+    <Grid>
+
+        <Label Content="Name" Margin="10,0,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTextbox" Margin="10,26,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Label Content="Username" Margin="10,44,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UsernameTextbox" Margin="10,70,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Label Content="Password" Margin="10,88,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PasswordTextbox" Margin="10,114,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Button Content="Add" Margin="10,137,10,10" HorizontalAlignment="Left" Width="40" Height="20" VerticalAlignment="Top" Click="Add_Button_Click"/>
+        <Button Content="Cancel" Margin="0,137,10,10" HorizontalAlignment="Right" Width="40" Height="20" VerticalAlignment="Top" Click="Cancel_Button_Click"/>
+
+    </Grid>
+</Window>

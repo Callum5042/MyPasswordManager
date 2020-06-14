@@ -1,0 +1,35 @@
+﻿<Window x:Class="MyPasswordManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPasswordManager"
+        mc:Ignorable="d"
+        KeyDown="Window_KeyDown"
+        WindowStartupLocation="CenterScreen"
+        Title="Password Manager" Height="480" Width="640">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Add" Click="MenuItem_Add_Click" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+
+        <ListView Name="lvLoginData">
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Login data">
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Username}" Header="Username"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Password}" Header="Password"/>
+                    
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+        
+    </DockPanel>
+</Window>
