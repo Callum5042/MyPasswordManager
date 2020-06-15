@@ -10,11 +10,9 @@ namespace MyPasswordManager
 {
     public static class Encryptor
     {
-        private const string masterPassword = "master_password";
-
         public static void Encrypt(string password, string data)
         {
-            var (Key, IV) = GetKeyAndIv();
+            var (Key, IV) = GetKeyAndIv(password);
 
             using var aes = Aes.Create();
             aes.Key = Key;
@@ -30,7 +28,7 @@ namespace MyPasswordManager
 
         public static string Decrypt(string password)
         {
-            var (Key, IV) = GetKeyAndIv();
+            var (Key, IV) = GetKeyAndIv(password);
 
             using Aes aes = Aes.Create();
             aes.Key = Key;
@@ -47,12 +45,12 @@ namespace MyPasswordManager
             return str;
         }
 
-        private static (byte[] Key, byte[] IV) GetKeyAndIv()
+        private static (byte[] Key, byte[] IV) GetKeyAndIv(string password)
         {
             SHA256 sha2 = new SHA256CryptoServiceProvider();
 
-            byte[] rawKey = Encoding.UTF8.GetBytes(masterPassword);
-            byte[] rawIV = Encoding.UTF8.GetBytes(masterPassword);
+            byte[] rawKey = Encoding.UTF8.GetBytes(password);
+            byte[] rawIV = Encoding.UTF8.GetBytes(password);
 
             byte[] hashKey = sha2.ComputeHash(rawKey);
             byte[] hashIV = sha2.ComputeHash(rawIV);

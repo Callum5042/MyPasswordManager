@@ -40,13 +40,15 @@ namespace MyPasswordManager
                 Password = password
             };
 
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
             // Read
-            var jsonString = Encryptor.Decrypt("master_password");
+            var jsonString = Encryptor.Decrypt(mainWindow.MasterPassword);
             var logins = JsonSerializer.Deserialize<LoginJsonRoot>(jsonString);
             logins.Logins.Add(loginData);
 
             jsonString = JsonSerializer.Serialize(logins);
-            Encryptor.Encrypt("master_password", jsonString);
+            Encryptor.Encrypt(mainWindow.MasterPassword, jsonString);
 
             if (Application.Current.MainWindow is MainWindow window)
             {

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MyPasswordManager"
         mc:Ignorable="d"
         KeyDown="Window_KeyDown"
+        Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen"
         Title="Password Manager" Height="480" Width="640">
     <DockPanel>

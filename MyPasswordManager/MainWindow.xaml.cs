@@ -22,16 +22,16 @@ namespace MyPasswordManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string MasterPassword { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
-
-            LoadContent();
         }
 
         public void LoadContent()
         {
-            var jsonString = Encryptor.Decrypt("master_password");
+            var jsonString = Encryptor.Decrypt(MasterPassword);
             var logins = JsonSerializer.Deserialize<LoginJsonRoot>(jsonString);
 
             var loginData = new List<LoginData>();
@@ -58,8 +58,27 @@ namespace MyPasswordManager
         {
             if (e.Key == Key.F5)
             {
+                LoadContentPasswordDialog();
+            }
+        }
+
+        private void LoadContentPasswordDialog()
+        {
+            var loginWindow = new LoginWindow()
+            {
+                Owner = this,
+                ShowInTaskbar = false
+            };
+
+            if (loginWindow.ShowDialog() == true)
+            {
                 LoadContent();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadContentPasswordDialog();
         }
     }
 }
